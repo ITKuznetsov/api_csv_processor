@@ -25,7 +25,6 @@
 
 4. Выполните миграции
    ```cmd
-   python manage.py makemigrations
    python manage.py migrate
    ```
 
