@@ -12,6 +12,9 @@ class ProcessCSVView(APIView):
         input_file_path = os.path.join(settings.BASE_DIR, 'test.csv')
         output_file_path = os.path.join(settings.BASE_DIR, 'formated_test.csv')
 
+        if not os.path.exists(input_file_path):
+            return Response({"error": f"Файл не был найден! (Директория поиска: {input_file_path})"}, status=400)
+
         with open(input_file_path, 'r', newline='') as infile:
             reader = csv.DictReader(infile)
             rows = list(reader)
